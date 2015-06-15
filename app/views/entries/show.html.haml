@@ -1,0 +1,54 @@
+%p#notice= notice
+
+%h1= @blog.title
+
+%p
+  %b Title:
+  = @entry.title
+%p
+  %b Body:
+  = @entry.body
+%p
+  %b Blog:
+  = @entry.blog_id
+
+= link_to 'Edit', edit_blog_entry_path(@blog, @entry)
+\|
+= link_to 'Back', blog_path(@blog)
+
+%hr
+
+%h2 Listing comments
+
+%table
+  %thead
+    %tr
+      %th Body
+      %th
+      %th
+
+  %tbody
+    - @entry.comments.each do |comment|
+      %tr
+        %td= comment.body_text_depends_on_status
+        %td= link_to comment.status_text_for_approve_link, blog_entry_comment_approve_url(@blog, @entry, comment), :method => :patch, :data => { :confirm => 'Are you sure this comment approve?' }
+        %td= link_to 'Destroy', [@blog, @entry, comment] , :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+%h2 New comment
+
+= form_for([@blog, @entry, @comment]) do |f|
+  - if @comment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@comment.errors.count, "error")} prohibited this entry from being saved:"
+      %ul
+        - @comment.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :body
+    = f.text_area :body
+  = f.hidden_field :blog_id,   value: @blog.id
+  = f.hidden_field :entry_id,  value: @entry.id
+  .actions
+    = f.submit 'Save'

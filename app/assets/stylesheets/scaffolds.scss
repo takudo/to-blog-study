@@ -1,0 +1,111 @@
+$anchor_font_color: #63a839;
+$border_color: #ddd;
+
+////////////////////////////////////
+
+html{
+  background-color: #ddd;
+}
+
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+
+  padding: 10px;
+}
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  color: $anchor_font_color;
+  &:visited {
+    color: lighten($anchor_font_color, 20%);
+  }
+  &:hover {
+    color: lighten($anchor_font_color, 40%);
+    background-color: #000;
+  }
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+
+table{
+  width: 100%;
+}
+
+th{
+  text-align: left;
+}
+
+td,
+th
+{
+  border-top: 1px solid #ddd;
+}
+
+input{
+  &[type=text]{
+    width: 100%;
+  }
+}
+
+textarea{
+  width: 100%;
+  border: 1px solid #ddd;
+  height: 6em;
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+
+hr {
+  border: 1px solid $border_color;
+}

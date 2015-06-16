@@ -1,0 +1,9 @@
+%p 新しいコメントが登録されました。
+%br
+%p 承認または削除してください。
+%br
+%p Blog: #{@blog.title}
+%p Entry: #{@entry.title}
+%p Comment: #{@comment.body}
+%br
+%p URL: #{BlogStudy::Application.config.action_mailer.default_url_options[:host]}#{blog_entry_path(@blog, @entry)}

@@ -14,6 +14,10 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+
+        #コメントが追加された旨のメールを送る
+        CommentMailer.comment_add(@blog, @entry, @comment).deliver
+
         format.html { redirect_to blog_entry_url(@blog, @entry), notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
